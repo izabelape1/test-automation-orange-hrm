@@ -22,12 +22,12 @@ public class Login {
         PageFactory.initElements(getDriver(), this);
     }
 
-    public Login setUsernameLabel(String username) {
+    public Login typeUsernameLabel(String username) {
         userNameLabel.sendKeys(username);
         return this;
     }
 
-    public Login setPasswordLabel(String password) {
+    public Login typePasswordLabel(String password) {
         clickOnPasswordLabel.sendKeys(password);
         return this;
     }

@@ -79,19 +79,19 @@ public class Admin {
         return this;
     }
 
-    public Admin setEmployeeNameLabel() {
+    public Admin typeEmployeeNameLabel() {
         String employeeName = getEmployeeName.getText();
         employeeNameLabel.sendKeys(employeeName);
         pickEmployeeName.click();
         return this;
     }
 
-    public Admin setUserNameLabel() {
+    public Admin typeUserNameLabel() {
         userNameLabel.sendKeys(generateUserName());
         return this;
     }
 
-    public Admin setPasswordLabel() {
+    public Admin typePasswordLabel() {
         passwordLabel.sendKeys(password);
         return this;
     }

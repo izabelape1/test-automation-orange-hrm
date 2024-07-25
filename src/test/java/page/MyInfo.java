@@ -84,87 +84,68 @@ public class MyInfo {
         return this;
     }
 
-    public MyInfo setFirstNameLabel(String firstName) {
+    public MyInfo typeFirstNameLabel(String firstName) {
         firstNameLabel.clear();
         firstNameLabel.sendKeys(firstName);
         return this;
     }
 
-    public MyInfo setMiddleNameLabel(String middleName) {
+    public MyInfo typeMiddleNameLabel(String middleName) {
         middleNameLabel.sendKeys(Keys.CONTROL + "a");
         middleNameLabel.sendKeys(Keys.DELETE);
         middleNameLabel.sendKeys(middleName);
         return this;
     }
 
-    public MyInfo setLastNameLabel(String lastName) {
+    public MyInfo typeLastNameLabel(String lastName) {
         lastNameLabel.sendKeys(Keys.CONTROL + "a");
         lastNameLabel.sendKeys(Keys.DELETE);
         lastNameLabel.sendKeys(lastName);
         return this;
     }
 
-    public MyInfo setNickNameLabel(String nickName) {
-        nickNameLabel.sendKeys(Keys.CONTROL + "a");
-        nickNameLabel.sendKeys(Keys.DELETE);
-        nickNameLabel.sendKeys(nickName);
-        return this;
-    }
 
-    public MyInfo setEmployeeIdLabel(int employeeIdNumber) {
+    public MyInfo typeEmployeeIdLabel(int employeeIdNumber) {
         employeeIdLabel.sendKeys(Keys.CONTROL + "a");
         employeeIdLabel.sendKeys(Keys.DELETE);
         employeeIdLabel.sendKeys(String.valueOf(employeeIdNumber));
         return this;
     }
 
-    public MyInfo setOtherIdLabel(int otherIdNumber) {
+    public MyInfo typeOtherIdLabel(int otherIdNumber) {
         otherIdLabel.sendKeys(Keys.CONTROL + "a");
         otherIdLabel.sendKeys(Keys.DELETE);
         otherIdLabel.sendKeys(String.valueOf(otherIdNumber));
         return this;
     }
 
-    public MyInfo setDriversLicenseNumberLabel(int driverLicenseNumber) {
+    public MyInfo typeDriversLicenseNumberLabel(int driverLicenseNumber) {
         driversLicenseNumberLabel.sendKeys(Keys.CONTROL + "a");
         driversLicenseNumberLabel.sendKeys(Keys.DELETE);
         driversLicenseNumberLabel.sendKeys(String.valueOf(driverLicenseNumber));
         return this;
     }
 
-    public MyInfo setLicenseExpiryDateLabel(String licenseExpairyDate) {
+    public MyInfo typeLicenseExpiryDateLabel(String licenseExpairyDate) {
         licenseExpiryDateLabel.click();
         licenseExpiryDateLabel.sendKeys(licenseExpairyDate);
         return this;
     }
 
-    public MyInfo setSsnNumberLabel(int ssnNumber) {
-        ssnNumberLabel.sendKeys(Keys.CONTROL + "a");
-        ssnNumberLabel.sendKeys(Keys.DELETE);
-        ssnNumberLabel.sendKeys(String.valueOf(ssnNumber));
-        return this;
-    }
 
-    public MyInfo setSinNumberLabel(int sinNumber) {
-        sinNumberLabel.sendKeys(Keys.CONTROL + "a");
-        sinNumberLabel.sendKeys(Keys.DELETE);
-        sinNumberLabel.sendKeys(String.valueOf(sinNumber));
-        return this;
-    }
-
-    public MyInfo setNationalityLabel() {
+    public MyInfo typeNationalityLabel() {
         nationalityDropDownList.click();
         nationalityLabel.click();
         return this;
     }
 
-    public MyInfo setMaritalStatusLabel() {
+    public MyInfo typeMaritalStatusLabel() {
         maritalStatusDropDownListLabel.click();
         maritalStatusLabel.click();
         return this;
     }
 
-    public MyInfo setDateOfBirthLabel(String dateOfBirth) {
+    public MyInfo typeDateOfBirthLabel(String dateOfBirth) {
         dateOfBirthLabel.click();
         dateOfBirthLabel.sendKeys(Keys.CONTROL + "a");
         dateOfBirthLabel.sendKeys(Keys.DELETE);
@@ -172,19 +153,8 @@ public class MyInfo {
         return this;
     }
 
-    public MyInfo setGenderRadioButton() {
+    public MyInfo typeGenderRadioButton() {
         genderRadioButton.click();
-        return this;
-    }
-
-    public MyInfo setMilitaryServiceLabel() {
-        militaryServiceLabel.sendKeys(Keys.CONTROL + "a");
-        militaryServiceLabel.sendKeys(Keys.DELETE);
-        return this;
-    }
-
-    public MyInfo setSmokerCheckbox() {
-        smokerCheckbox.click();
         return this;
     }
 

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class AdminTests extends TestSetup {
 
     @Test
-    public void addingNewAdminTest() {
+    public void givenAdminDetailsWhenClickOnSaveButtonThenNewAdminIsRegisterTest(){
 
         Menu menu = new Menu();
         menu
@@ -21,9 +21,9 @@ public class AdminTests extends TestSetup {
                 .selectUserRoleLabel()
                 .clickStatusList()
                 .selectStatusLabel()
-                .setEmployeeNameLabel()
-                .setUserNameLabel()
-                .setPasswordLabel()
+                .typeEmployeeNameLabel()
+                .typeUserNameLabel()
+                .typePasswordLabel()
                 .setConfirmPasswordLabel()
                 .clickSaveButton();
         Assert.assertTrue(admin.isSuccessButtonIsDisplayed());

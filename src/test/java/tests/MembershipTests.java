@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class MembershipTests extends TestSetup {
 
     @Test
-    public void addingNewMembershipTests() {
+    public void givenMembershipDetailsWhenClickOnSaveButtonThenMembershipIsAddedTest() {
 
         Menu menu = new Menu();
         menu
@@ -24,11 +24,11 @@ public class MembershipTests extends TestSetup {
                 .selectMembershipLabel()
                 .clickSubscriptionPayerList()
                 .selectSubscriptionPayerLabel()
-                .setSubscriptionAmountLabel(Constants.MEMBERSHIP_AMOUNT)
+                .typeSubscriptionAmountLabel(Constants.MEMBERSHIP_AMOUNT)
                 .clickCurrencyList()
                 .selectCurrencyOption()
-                .setStartDateLabel()
-                .setRenewalDateLabel()
+                .typeStartDateLabel()
+                .typeRenewalDateLabel()
                 .clickSaveButton();
 
         boolean isMemberAdded = membership.isMembershipPresent(Constants.MEMBERSHIP_AMOUNT);
