@@ -89,7 +89,7 @@ public class Membership {
         return this;
     }
 
-    public Membership setSubscriptionAmountLabel(String subscriptionAmount) {
+    public Membership typeSubscriptionAmountLabel(String subscriptionAmount) {
         subscriptionAmountLabel.click();
         subscriptionAmountLabel.sendKeys(subscriptionAmount);
         return this;
@@ -105,13 +105,13 @@ public class Membership {
         return this;
     }
 
-    public Membership setStartDateLabel() {
+    public Membership typeStartDateLabel() {
         startDateLabel.click();
         calendarStartDateLabel.click();
         return this;
     }
 
-    public Membership setRenewalDateLabel() {
+    public Membership typeRenewalDateLabel() {
         renewalDateLabel.click();
         calendarRenewalDateLabel.click();
         return this;

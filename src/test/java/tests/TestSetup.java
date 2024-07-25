@@ -17,8 +17,8 @@ public class TestSetup {
         getDriver().navigate().to("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         Login login = new Login();
         login
-                .setUsernameLabel("Admin")
-                .setPasswordLabel("admin123")
+                .typeUsernameLabel("Admin")
+                .typePasswordLabel("admin123")
                 .clickLoginButton();
     }
 
