@@ -1,5 +1,7 @@
 package tests;
 
+import enums.UserRole;
+import enums.UserStatus;
 import page.Menu;
 import page.Admin;
 import org.testng.Assert;
@@ -17,14 +19,12 @@ public class AdminTests extends TestSetup {
         Admin admin = new Admin();
         admin
                 .clickAddButton()
-                .clickUserRoleList()
-                .selectUserRoleLabel()
-                .clickStatusList()
-                .selectStatusLabel()
+                .chooseUserRoleLabel(UserRole.ADMIN)
+                .chooseStatusLabel(UserStatus.ENABLED)
                 .setEmployeeNameLabel()
                 .setUserNameLabel()
                 .setPasswordLabel()
-                .setConfirmPasswordLabel()
+                .typeConfirmPasswordLabel()
                 .clickSaveButton();
         Assert.assertTrue(admin.isSuccessButtonIsDisplayed());
     }

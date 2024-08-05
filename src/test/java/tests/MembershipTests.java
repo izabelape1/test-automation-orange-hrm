@@ -1,5 +1,7 @@
 package tests;
 
+import enums.SubscriptionPayer;
+import enums.TypeOfMembership;
 import page.Menu;
 import page.Membership;
 import helpers.Constants;
@@ -20,13 +22,10 @@ public class MembershipTests extends TestSetup {
         membership
                 .clickMembershipButton()
                 .clickAddAssignedMembershipsButton()
-                .clickMembershipList()
-                .selectMembershipLabel()
-                .clickSubscriptionPayerList()
-                .selectSubscriptionPayerLabel()
+                .chooseMembershipLabel(TypeOfMembership.ACCA)
+                .chooseSubscriptionPayerLabel(SubscriptionPayer.INDIVIDUAL)
                 .setSubscriptionAmountLabel(Constants.MEMBERSHIP_AMOUNT)
-                .clickCurrencyList()
-                .selectCurrencyOption()
+                .clickCurrencyLabel()
                 .setStartDateLabel()
                 .setRenewalDateLabel()
                 .clickSaveButton();
