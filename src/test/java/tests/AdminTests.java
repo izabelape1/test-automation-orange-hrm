@@ -19,19 +19,11 @@ public class AdminTests extends TestSetup {
         Admin admin = new Admin();
         admin
                 .clickAddButton()
-                .clickUserRoleList()
-                .selectUserRoleLabel()
-                .clickStatusList()
-                .selectStatusLabel()
                 .typeEmployeeNameLabel()
                 .typeUserNameLabel()
                 .typePasswordLabel()
-                .setConfirmPasswordLabel()
                 .chooseUserRoleLabel(UserRole.ADMIN)
                 .chooseStatusLabel(UserStatus.ENABLED)
-                .setEmployeeNameLabel()
-                .setUserNameLabel()
-                .setPasswordLabel()
                 .typeConfirmPasswordLabel()
                 .clickSaveButton();
         Assert.assertTrue(admin.isSuccessButtonIsDisplayed());
