@@ -1,5 +1,7 @@
 package page;
 
+import enums.UserRole;
+import enums.UserStatus;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -13,16 +15,22 @@ public class Admin {
     private WebElement addButton;
 
     @FindBy(css = "div[class='oxd-select-text-input']")
-    private WebElement userRoleList;
+    private WebElement userRoleDropDownList;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]")
+    private WebElement ESSLabel;
 
     @FindBy(xpath = "//span[@data-v-13cf171c=''][contains(text(),'Admin')]")
-    private WebElement adminOption;
+    private WebElement adminLabel;
 
     @FindBy(xpath = "//div[contains(text(),'-- Select --')]")
-    private WebElement statusLabel;
+    private WebElement statusDropDownList;
 
     @FindBy(css = "div[role='listbox'] div:nth-child(2) span:nth-child(1)")
     private WebElement enabledLabel;
+
+    @FindBy(css = "div[class='oxd-select-option --selected']")
+    private WebElement disabledLabel;
 
     @FindBy(css = "p[class='oxd-userdropdown-name']")
     private WebElement getEmployeeName;
@@ -31,7 +39,7 @@ public class Admin {
     private WebElement employeeNameLabel;
 
     @FindBy(css = "div[role='option'] span")
-    private WebElement pickEmployeeName;
+    private WebElement selectEmployeeName;
 
     @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
     private WebElement userNameLabel;
@@ -59,30 +67,36 @@ public class Admin {
         return this;
     }
 
-    public Admin clickUserRoleList() {
-        userRoleList.click();
+    public Admin chooseUserRoleLabel(UserRole userRole) {
+        userRoleDropDownList.click();
+        switch (userRole) {
+            case ADMIN:
+                adminLabel.click();
+                break;
+            case ESS:
+                ESSLabel.click();
+                break;
+        }
         return this;
     }
 
-    public Admin selectUserRoleLabel() {
-        adminOption.click();
-        return this;
-    }
-
-    public Admin clickStatusList() {
-        statusLabel.click();
-        return this;
-    }
-
-    public Admin selectStatusLabel() {
-        enabledLabel.click();
+    public Admin chooseStatusLabel(UserStatus userStatus) {
+        statusDropDownList.click();
+        switch(userStatus){
+            case ENABLED:
+                enabledLabel.click();
+                break;
+            case DISABLED:
+                disabledLabel.click();
+                break;
+        }
         return this;
     }
 
     public Admin typeEmployeeNameLabel() {
         String employeeName = getEmployeeName.getText();
         employeeNameLabel.sendKeys(employeeName);
-        pickEmployeeName.click();
+        selectEmployeeName.click();
         return this;
     }
 
@@ -96,7 +110,7 @@ public class Admin {
         return this;
     }
 
-    public Admin setConfirmPasswordLabel() {
+    public Admin typeConfirmPasswordLabel() {
         confirmPasswordLabel.sendKeys(password);
         return this;
     }

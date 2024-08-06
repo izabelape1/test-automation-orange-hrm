@@ -13,10 +13,10 @@ public class Login {
     private WebElement userNameLabel;
 
     @FindBy(css = "input[name='password']")
-    private WebElement clickOnPasswordLabel;
+    private WebElement passwordLabel;
 
     @FindBy(css = "button[type='submit']")
-    private WebElement clickOnLoginButton;
+    private WebElement loginButton;
 
     public Login() {
         PageFactory.initElements(getDriver(), this);
@@ -28,12 +28,12 @@ public class Login {
     }
 
     public Login typePasswordLabel(String password) {
-        clickOnPasswordLabel.sendKeys(password);
+        passwordLabel.sendKeys(password);
         return this;
     }
 
     public Login clickLoginButton() {
-        clickOnLoginButton.click();
+        loginButton.click();
         return this;
     }
 }

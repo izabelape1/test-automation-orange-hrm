@@ -4,6 +4,8 @@ import page.Menu;
 import page.Membership;
 import helpers.Constants;
 import org.testng.Assert;
+import enums.TypeOfMembership;
+import enums.SubscriptionPayer;
 import org.testng.annotations.Test;
 
 
@@ -29,6 +31,12 @@ public class MembershipTests extends TestSetup {
                 .selectCurrencyOption()
                 .typeStartDateLabel()
                 .typeRenewalDateLabel()
+                .chooseMembershipLabel(TypeOfMembership.ACCA)
+                .chooseSubscriptionPayerLabel(SubscriptionPayer.INDIVIDUAL)
+                .setSubscriptionAmountLabel(Constants.MEMBERSHIP_AMOUNT)
+                .clickCurrencyLabel()
+                .setStartDateLabel()
+                .setRenewalDateLabel()
                 .clickSaveButton();
 
         boolean isMemberAdded = membership.isMembershipPresent(Constants.MEMBERSHIP_AMOUNT);
