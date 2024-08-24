@@ -2,6 +2,8 @@ package page;
 
 import java.util.List;
 
+import enums.SubscriptionPayer;
+import enums.TypeOfMembership;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -13,29 +15,44 @@ public class Membership {
     @FindBy(xpath = "//div[@class='orangehrm-edit-employee-navigation']//div[2]//div[10]")
     private WebElement membershipButton;
 
-    @FindBy(xpath = "//body/div[@id='app']/div[@class='oxd-layout']/div[@class='oxd-layout-container']/div[@class='oxd-layout-context']/div[@class='orangehrm-background-container']/div[@class='orangehrm-card-container']/div[@class='orangehrm-edit-employee']/div[@class='orangehrm-edit-employee-content']/div[@class='orangehrm-horizontal-padding orangehrm-vertical-padding']/div[@class='orangehrm-action-header']/button[1]")
+    @FindBy(xpath = "//div[@class='orangehrm-edit-employee']/div[2]/div[1]/div[1]/button")
     private WebElement addAssignedMembershipsButton;
 
     @FindBy(xpath = "//div[@class='oxd-form-row']//div[1]//div[1]//div[1]//div[2]//div[1]//div[1]//div[2]")
-    private WebElement membershipList;
+    private WebElement membershipDropDownList;
 
-    @FindBy(xpath = "//div[@class='oxd-grid-3 orangehrm-full-width-grid']/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]")
-    private WebElement membershipOption;
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/span")
+    private WebElement OneTwoThreeLabel;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]/span")
+    private WebElement ACCLabel;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[4]/span")
+    private WebElement britishComputerSocietyLabel;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[5]/span")
+    private WebElement charteredInstituteOfMarketingLabel;
+
+    @FindBy (xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[6]/span")
+    private WebElement CIMALabel;
 
     @FindBy(xpath = "//div[@class='oxd-grid-3 orangehrm-full-width-grid']/div[2]/div[1]/div[2]/div[1]")
-    private WebElement subscriptionPayerList;
+    private WebElement subscriptionPayerDropDownList;
 
-    @FindBy(xpath = "//div[@class='oxd-grid-3 orangehrm-full-width-grid']/div[2]/div[1]/div[2]/div[1]/div[2]/div[3]/span")
-    private WebElement subscriptionPayerOption;
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/span")
+    private WebElement companyLabel;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[3]/span")
+    private WebElement individualLabel;
 
     @FindBy(xpath = "//div[@class='oxd-grid-3 orangehrm-full-width-grid']//div[3]//div[1]//div[2]//input")
     private WebElement subscriptionAmountLabel;
 
     @FindBy(xpath = "//body[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/div[4]/div[1]/div[2]/div[1]/div[1]/div[1]")
-    private WebElement currencyList;
+    private WebElement currencyDropDownList;
 
     @FindBy(xpath = "//div[@class='oxd-select-dropdown --positon-bottom']//div[5]")
-    private WebElement currencyOption;
+    private WebElement currencyOptionLabel;
 
     @FindBy(xpath = "//div[@class='oxd-grid-3 orangehrm-full-width-grid']//div[5]//div[1]//div[2]")
     private WebElement startDateLabel;
@@ -69,23 +86,35 @@ public class Membership {
         return this;
     }
 
-    public Membership clickMembershipList() {
-        membershipList.click();
+    public Membership chooseMembershipLabel(TypeOfMembership typeOfMembership) {
+        membershipDropDownList.click();
+        switch (typeOfMembership){
+            case ACCA:
+                ACCLabel.click();
+                break;
+            case BRITISH_COMPUTER_SOCIETY:
+                britishComputerSocietyLabel.click();
+                break;
+            case CHARTERED_INSTITUTE_OF_MARKETING:
+                charteredInstituteOfMarketingLabel.click();
+                break;
+            case CIMA:
+                CIMALabel.click();
+                break;
+        }
         return this;
     }
 
-    public Membership selectMembershipLabel() {
-        membershipOption.click();
-        return this;
-    }
-
-    public Membership clickSubscriptionPayerList() {
-        subscriptionPayerList.click();
-        return this;
-    }
-
-    public Membership selectSubscriptionPayerLabel() {
-        subscriptionPayerOption.click();
+    public Membership chooseSubscriptionPayerLabel(SubscriptionPayer subscriptionPayer) {
+        subscriptionPayerDropDownList.click();
+        switch (subscriptionPayer){
+            case INDIVIDUAL:
+                individualLabel.click();
+                break;
+            case COMPANY:
+                companyLabel.click();
+                break;
+        }
         return this;
     }
 
@@ -95,23 +124,19 @@ public class Membership {
         return this;
     }
 
-    public Membership clickCurrencyList() {
-        currencyList.click();
+    public Membership selectCurrencyLabel() {
+        currencyDropDownList.click();
+        currencyOptionLabel.click();
         return this;
     }
 
-    public Membership selectCurrencyOption() {
-        currencyOption.click();
-        return this;
-    }
-
-    public Membership typeStartDateLabel() {
+    public Membership selectStartDateLabel() {
         startDateLabel.click();
         calendarStartDateLabel.click();
         return this;
     }
 
-    public Membership typeRenewalDateLabel() {
+    public Membership selectRenewalDateLabel() {
         renewalDateLabel.click();
         calendarRenewalDateLabel.click();
         return this;

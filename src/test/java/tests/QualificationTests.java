@@ -1,5 +1,6 @@
 package tests;
 
+import helpers.Constants;
 import page.Menu;
 import page.Qualifications;
 import org.testng.annotations.Test;
@@ -14,9 +15,9 @@ public class QualificationTests extends TestSetup {
         Qualifications qualifications = new Qualifications();
         qualifications
                 .clickQualificationsButton()
-                .clickAddButton()
-                .typeCompanyNameLabel("DPS")
-                .typeJobTitle("Manual Tester")
+                .clickWorkExperienceAddButton()
+                .typeCompanyNameLabel(Constants.COMPANY_NAME)
+                .typeJobTitle(Constants.JOB_TITLE)
                 .selectStartDate()
                 .selectFinishDate()
                 .typeComment("Hello World")

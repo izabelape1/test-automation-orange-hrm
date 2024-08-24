@@ -1,6 +1,10 @@
 package tests;
 
+import enums.BloodType;
+import enums.Gender;
 import page.MyInfo;
+import helpers.Constants;
+import enums.MaritalStatus;
 import org.testng.annotations.Test;
 
 public class MyInfoTests extends TestSetup {
@@ -10,18 +14,18 @@ public class MyInfoTests extends TestSetup {
         MyInfo myInfo = new MyInfo();
         myInfo
                 .clickMyInfoButton()
-                .typeFirstNameLabel("Anna")
-                .typeMiddleNameLabel("Pola")
-                .typeLastNameLabel("Kowalska")
-                .typeEmployeeIdLabel(123)
-                .typeOtherIdLabel(123)
-                .typeDriversLicenseNumberLabel(123)
-                .typeLicenseExpiryDateLabel("2025-01-01")
-                .typeNationalityLabel()
-                .typeMaritalStatusLabel()
-                .typeDateOfBirthLabel("2000-01-01")
-                .typeGenderRadioButton()
+                .typeFirstNameLabel(Constants.FIRST_NAME)
+                .typeMiddleNameLabel(Constants.MIDDLE_NAME)
+                .typeLastNameLabel(Constants.LAST_NAME)
+                .typeEmployeeIdLabel(Constants.EMPLOYEE_ID_NUMBER)
+                .typeOtherIdLabel(Constants.OTHER_ID_NUMBER)
+                .typeDriversLicenseNumberLabel(Constants.DRIVERS_LICENSE_NUMBER)
+                .typeLicenseExpiryDateLabel(Constants.LICENSE_EXPIRY_DATE)
+                .selectNationalityLabel()
+                .chooseMaritalStatusLabel(MaritalStatus.MARRIED)
+                .typeDateOfBirthLabel(Constants.DATE_OF_BIRTH)
+                .clickGenderRadioButton()
                 .clickSaveButton()
-                .setBloodTypeLabel();
+                .setBloodTypeLabel(BloodType.A_NEGATIVE);
     }
 }

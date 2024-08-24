@@ -22,21 +22,12 @@ public class MembershipTests extends TestSetup {
         membership
                 .clickMembershipButton()
                 .clickAddAssignedMembershipsButton()
-                /*.chooseMembershipLabel(TypeOfMembership.ACCA)
-                .chooseSubscriptionPayerLabel(SubscriptionPayer.INDIVIDUAL)*/
+                .chooseMembershipLabel(TypeOfMembership.ACCA)
+                .chooseSubscriptionPayerLabel(SubscriptionPayer.INDIVIDUAL)
                 .typeSubscriptionAmountLabel(Constants.MEMBERSHIP_AMOUNT)
-
-                .selectMembershipLabel()
-                .clickSubscriptionPayerList()
-                .selectSubscriptionPayerLabel()
-                .clickCurrencyList()
-                .selectCurrencyOption()
-                .typeStartDateLabel()
-                .typeRenewalDateLabel()
-                /*.setSubscriptionAmountLabel(Constants.MEMBERSHIP_AMOUNT)*/
-                /*.clickCurrencyLabel()*/
-                /*.setStartDateLabel()*/
-                /*.setRenewalDateLabel()*/
+                .selectCurrencyLabel()
+                .selectStartDateLabel()
+                .selectRenewalDateLabel()
                 .clickSaveButton();
 
         boolean isMemberAdded = membership.isMembershipPresent(Constants.MEMBERSHIP_AMOUNT);

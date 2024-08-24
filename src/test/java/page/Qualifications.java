@@ -11,7 +11,7 @@ public class Qualifications {
     @FindBy(xpath = "//div[@class='orangehrm-edit-employee-navigation']/div[2]/div[9]/a")
     private WebElement qualificationsButton;
 
-    @FindBy(xpath = "//body/div[@id='app']/div[@class='oxd-layout']/div[@class='oxd-layout-container']/div[@class='oxd-layout-context']/div[@class='orangehrm-background-container']/div[@class='orangehrm-card-container']/div[@class='orangehrm-edit-employee']/div[@class='orangehrm-edit-employee-content']/div[2]/div[1]/div[1]/button[1]")
+    @FindBy(xpath = "//div[@class='orangehrm-edit-employee']/div[2]/div[2]/div[1]/div[1]/button/i")
     private WebElement addButton;
 
     @FindBy(xpath = "//div[@class='orangehrm-edit-employee-content']/div[2]/div/form/div[1]/div[1]/div[1]/div[1]/div[2]/input")
@@ -47,7 +47,7 @@ public class Qualifications {
         return this;
     }
 
-    public Qualifications clickAddButton(){
+    public Qualifications clickWorkExperienceAddButton(){
         addButton.click();
         return this;
     }

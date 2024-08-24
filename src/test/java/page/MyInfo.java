@@ -1,5 +1,8 @@
 package page;
 
+import enums.BloodType;
+import enums.Gender;
+import enums.MaritalStatus;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,7 +33,7 @@ public class MyInfo {
     @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[2]/div[1]/div[2]/input")
     private WebElement otherIdLabel;
 
-    @FindBy(xpath = "//body/div[@id='app']/div[@class='oxd-layout']/div[@class='oxd-layout-container']/div[@class='oxd-layout-context']/div[@class='orangehrm-background-container']/div[@class='orangehrm-card-container']/div[@class='orangehrm-edit-employee']/div[@class='orangehrm-edit-employee-content']/div[@class='orangehrm-horizontal-padding orangehrm-vertical-padding']/form[@class='oxd-form']/div[2]/div[2]/div[1]/div[1]/div[2]/input[1]")
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[2]/div[1]/div[1]/div[2]/input")
     private WebElement driversLicenseNumberLabel;
 
     @FindBy(xpath = "//div[@class='oxd-form-row']/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/input[1]")
@@ -51,14 +54,23 @@ public class MyInfo {
     @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]")
     private WebElement maritalStatusDropDownListLabel;
 
-    @FindBy(xpath = "//span[normalize-space()='Single']")
-    private WebElement maritalStatusLabel;
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/span")
+    private WebElement singleLabel;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[3]/span")
+    private WebElement marriedLabel;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[4]/span")
+    private WebElement otherLabel;
 
     @FindBy(xpath = "//div[@class='oxd-form-row']/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/input")
     private WebElement dateOfBirthLabel;
 
     @FindBy(xpath = "//div[@class='oxd-form-row']/div[2]/div[2]/div[1]/div[2]/div[2]/div[2]/div[1]/label[1]/span")
-    private WebElement genderRadioButton;
+    private WebElement femaleRadioButton;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/label/input")
+    private WebElement maleRadioButton;
 
     @FindBy(xpath = "//form[@class='oxd-form']/div[4]/div[1]/div[1]/div[1]/div[2]/input")
     private WebElement militaryServiceLabel;
@@ -70,7 +82,28 @@ public class MyInfo {
     private WebElement bloodTypeDropDownListLabel;
 
     @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]")
-    private WebElement bloodTypeLabel;
+    private WebElement APositiveLabel;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[3]")
+    private WebElement ANegativeLabel;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[4]")
+    private WebElement BPositiveLabel;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[5]")
+    private WebElement BNegativeLabel;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[6]")
+    private WebElement zeroPositiveLabel;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[7]")
+    private WebElement zeroNegativeLabel;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[8]")
+    private WebElement ABPositiveLabel;
+
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[9]")
+    private WebElement ABNegativeLabel;
 
     @FindBy(xpath = "//form[@class='oxd-form']/div[2]/button")
     private WebElement saveButton;
@@ -85,7 +118,8 @@ public class MyInfo {
     }
 
     public MyInfo typeFirstNameLabel(String firstName) {
-        firstNameLabel.clear();
+        firstNameLabel.sendKeys(Keys.CONTROL + "a");
+        firstNameLabel.sendKeys(Keys.DELETE);
         firstNameLabel.sendKeys(firstName);
         return this;
     }
@@ -126,22 +160,33 @@ public class MyInfo {
         return this;
     }
 
-    public MyInfo typeLicenseExpiryDateLabel(String licenseExpairyDate) {
-        licenseExpiryDateLabel.click();
-        licenseExpiryDateLabel.sendKeys(licenseExpairyDate);
+    public MyInfo typeLicenseExpiryDateLabel(String licenseExpiryDate) {
+        licenseExpiryDateLabel.sendKeys(Keys.CONTROL + "a");
+        licenseExpiryDateLabel.sendKeys(Keys.DELETE);
+        licenseExpiryDateLabel.sendKeys(licenseExpiryDate);
         return this;
     }
 
 
-    public MyInfo typeNationalityLabel() {
+    public MyInfo selectNationalityLabel() {
         nationalityDropDownList.click();
         nationalityLabel.click();
         return this;
     }
 
-    public MyInfo typeMaritalStatusLabel() {
+    public MyInfo chooseMaritalStatusLabel(MaritalStatus maritalStatus) {
         maritalStatusDropDownListLabel.click();
-        maritalStatusLabel.click();
+        switch(maritalStatus){
+            case SINGLE:
+                singleLabel.click();
+                break;
+            case MARRIED:
+                marriedLabel.click();
+                break;
+            case OTHER:
+                otherLabel.click();
+                break;
+        }
         return this;
     }
 
@@ -153,14 +198,39 @@ public class MyInfo {
         return this;
     }
 
-    public MyInfo typeGenderRadioButton() {
-        genderRadioButton.click();
+    public MyInfo clickGenderRadioButton(){
+       femaleRadioButton.click();
         return this;
     }
 
-    public MyInfo setBloodTypeLabel() {
+    public MyInfo setBloodTypeLabel(BloodType bloodType) {
         bloodTypeDropDownListLabel.click();
-        bloodTypeLabel.click();
+        switch(bloodType){
+            case A_POSITIVE:
+                APositiveLabel.click();
+                break;
+            case A_NEGATIVE:
+                ANegativeLabel.click();
+                break;
+            case B_POSITIVE:
+                BPositiveLabel.click();
+                break;
+            case B_NEGATIVE:
+                BNegativeLabel.click();
+                break;
+            case O_POSITIVE:
+                zeroPositiveLabel.click();
+                break;
+            case O_NEGATIVE:
+                zeroNegativeLabel.click();
+                break;
+            case AB_POSITIVE:
+                ABPositiveLabel.click();
+                break;
+            case AB_NEGATIVE:
+                ABNegativeLabel.click();
+                break;
+        }
         return this;
     }
 
