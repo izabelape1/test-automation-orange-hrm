@@ -2,15 +2,16 @@ package page;
 
 import java.util.List;
 
-import enums.SubscriptionPayer;
+import io.qameta.allure.Step;
 import enums.TypeOfMembership;
+import enums.SubscriptionPayer;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import static helpers.DriverSingleton.getDriver;
 
-public class Membership {
+public class Membership extends BasePage {
 
     @FindBy(xpath = "//div[@class='orangehrm-edit-employee-navigation']//div[2]//div[10]")
     private WebElement membershipButton;
@@ -57,17 +58,14 @@ public class Membership {
     @FindBy(xpath = "//div[@class='oxd-grid-3 orangehrm-full-width-grid']//div[5]//div[1]//div[2]")
     private WebElement startDateLabel;
 
-    @FindBy(xpath = "//div[@class='oxd-date-input-calendar']/div[1]/div[3]/div[1]")
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[5]/div[1]/div[2]/div[1]/div[2]/div[1]/div[3]/div[1]")
     private WebElement calendarStartDateLabel;
 
     @FindBy(xpath = "//div[@class='oxd-grid-3 orangehrm-full-width-grid']/div[6]/div[1]/div[2]/div[1]/div[1]")
     private WebElement renewalDateLabel;
 
-    @FindBy(xpath = "//div[@class='oxd-date-input-calendar']/div[1]/div[3]/div[31]/div[1]")
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[6]/div[1]/div[2]/div[1]/div[2]/div[1]/div[3]/div[30]")
     private WebElement calendarRenewalDateLabel;
-
-    @FindBy(css = "button[type='submit']")
-    private WebElement saveButton;
 
     @FindBy(xpath = "//div[@class='oxd-table']/div[2]/div[1]/div[1]/div")
     private List<WebElement> membershipEntries;
@@ -76,16 +74,19 @@ public class Membership {
         PageFactory.initElements(getDriver(), this);
     }
 
+    @Step("Click membership button")
     public Membership clickMembershipButton() {
         membershipButton.click();
         return this;
     }
 
+    @Step("Click add assigned membership button")
     public Membership clickAddAssignedMembershipsButton() {
         addAssignedMembershipsButton.click();
         return this;
     }
 
+    @Step("Choosing membership Label : {typeOfMembership}")
     public Membership chooseMembershipLabel(TypeOfMembership typeOfMembership) {
         membershipDropDownList.click();
         switch (typeOfMembership){
@@ -105,6 +106,7 @@ public class Membership {
         return this;
     }
 
+    @Step("Choosing subscription payer label: {subscriptionPayer}")
     public Membership chooseSubscriptionPayerLabel(SubscriptionPayer subscriptionPayer) {
         subscriptionPayerDropDownList.click();
         switch (subscriptionPayer){
@@ -118,35 +120,35 @@ public class Membership {
         return this;
     }
 
+    @Step("Type subscription amount label")
     public Membership typeSubscriptionAmountLabel(String subscriptionAmount) {
         subscriptionAmountLabel.click();
         subscriptionAmountLabel.sendKeys(subscriptionAmount);
         return this;
     }
 
+    @Step("Choosing currency")
     public Membership selectCurrencyLabel() {
         currencyDropDownList.click();
         currencyOptionLabel.click();
         return this;
     }
 
+    @Step("Selecting start date")
     public Membership selectStartDateLabel() {
         startDateLabel.click();
         calendarStartDateLabel.click();
         return this;
     }
 
+    @Step("Selecting renewal date")
     public Membership selectRenewalDateLabel() {
         renewalDateLabel.click();
         calendarRenewalDateLabel.click();
         return this;
     }
 
-    public Membership clickSaveButton() {
-        saveButton.click();
-        return this;
-    }
-
+    @Step("Verification is membership present")
     public boolean isMembershipPresent(String membershipType) {
         for (WebElement entry : membershipEntries) {
             String entryText = entry.getText();

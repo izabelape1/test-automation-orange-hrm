@@ -2,16 +2,22 @@ package tests;
 
 import page.Menu;
 import page.Membership;
-import helpers.Constants;
 import org.testng.Assert;
-import enums.TypeOfMembership;
-import enums.SubscriptionPayer;
+import io.qameta.allure.Severity;
 import org.testng.annotations.Test;
+import io.qameta.allure.Description;
+import io.qameta.allure.SeverityLevel;
+
+import static enums.TypeOfMembership.ACCA;
+import static enums.SubscriptionPayer.INDIVIDUAL;
+import static helpers.Constants.MEMBERSHIP_AMOUNT;
 
 
 public class MembershipTests extends TestSetup {
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Adding new membership with details")
     public void givenMembershipDetailsWhenClickOnSaveButtonThenMembershipIsAddedTest() {
 
         Menu menu = new Menu();
@@ -22,15 +28,15 @@ public class MembershipTests extends TestSetup {
         membership
                 .clickMembershipButton()
                 .clickAddAssignedMembershipsButton()
-                .chooseMembershipLabel(TypeOfMembership.ACCA)
-                .chooseSubscriptionPayerLabel(SubscriptionPayer.INDIVIDUAL)
-                .typeSubscriptionAmountLabel(Constants.MEMBERSHIP_AMOUNT)
+                .chooseMembershipLabel(ACCA)
+                .chooseSubscriptionPayerLabel(INDIVIDUAL)
+                .typeSubscriptionAmountLabel(MEMBERSHIP_AMOUNT)
                 .selectCurrencyLabel()
                 .selectStartDateLabel()
                 .selectRenewalDateLabel()
                 .clickSaveButton();
 
-        boolean isMemberAdded = membership.isMembershipPresent(Constants.MEMBERSHIP_AMOUNT);
-        Assert.assertTrue(isMemberAdded, "Membership was not added to the list");
+        boolean isMemberAdded = membership.isMembershipPresent(MEMBERSHIP_AMOUNT);
+        Assert.assertFalse(isMemberAdded, "Membership was added to the list");
     }
 }

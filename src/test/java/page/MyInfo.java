@@ -1,8 +1,8 @@
 package page;
 
 import enums.BloodType;
-import enums.Gender;
 import enums.MaritalStatus;
+import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,12 +10,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import static helpers.DriverSingleton.getDriver;
 
-public class MyInfo {
+public class MyInfo extends BasePage {
 
-    @FindBy(xpath = "//a[@href='/web/index.php/pim/viewMyDetails']/span")
-    private WebElement myInfoButton;
-
-    @FindBy(name = "firstName")
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/input")
     private WebElement firstNameLabel;
 
     @FindBy(name = "middleName")
@@ -51,7 +48,7 @@ public class MyInfo {
     @FindBy(xpath = "//div[@class='oxd-form-row']/div[3]/div[2]/div[1]/div[2]/input[1]")
     private WebElement sinNumberLabel;
 
-    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]")
+    @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/i")
     private WebElement maritalStatusDropDownListLabel;
 
     @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[2]/span")
@@ -105,18 +102,15 @@ public class MyInfo {
     @FindBy(xpath = "//div[@class='oxd-form-row']/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[9]")
     private WebElement ABNegativeLabel;
 
-    @FindBy(xpath = "//form[@class='oxd-form']/div[2]/button")
-    private WebElement saveButton;
-
     public MyInfo() {
         PageFactory.initElements(getDriver(), this);
     }
 
-    public MyInfo clickMyInfoButton() {
-        myInfoButton.click();
-        return this;
+    public static MyInfo getInstance() {
+        return new MyInfo();
     }
 
+    @Step("Type first name")
     public MyInfo typeFirstNameLabel(String firstName) {
         firstNameLabel.sendKeys(Keys.CONTROL + "a");
         firstNameLabel.sendKeys(Keys.DELETE);
@@ -124,6 +118,7 @@ public class MyInfo {
         return this;
     }
 
+    @Step("Type middle name")
     public MyInfo typeMiddleNameLabel(String middleName) {
         middleNameLabel.sendKeys(Keys.CONTROL + "a");
         middleNameLabel.sendKeys(Keys.DELETE);
@@ -131,6 +126,7 @@ public class MyInfo {
         return this;
     }
 
+    @Step("Type last name")
     public MyInfo typeLastNameLabel(String lastName) {
         lastNameLabel.sendKeys(Keys.CONTROL + "a");
         lastNameLabel.sendKeys(Keys.DELETE);
@@ -138,7 +134,7 @@ public class MyInfo {
         return this;
     }
 
-
+    @Step("Type employee ID")
     public MyInfo typeEmployeeIdLabel(int employeeIdNumber) {
         employeeIdLabel.sendKeys(Keys.CONTROL + "a");
         employeeIdLabel.sendKeys(Keys.DELETE);
@@ -146,6 +142,7 @@ public class MyInfo {
         return this;
     }
 
+    @Step("Type other ID")
     public MyInfo typeOtherIdLabel(int otherIdNumber) {
         otherIdLabel.sendKeys(Keys.CONTROL + "a");
         otherIdLabel.sendKeys(Keys.DELETE);
@@ -153,6 +150,7 @@ public class MyInfo {
         return this;
     }
 
+    @Step("Type driver license number")
     public MyInfo typeDriversLicenseNumberLabel(int driverLicenseNumber) {
         driversLicenseNumberLabel.sendKeys(Keys.CONTROL + "a");
         driversLicenseNumberLabel.sendKeys(Keys.DELETE);
@@ -160,6 +158,7 @@ public class MyInfo {
         return this;
     }
 
+    @Step("Type license expiry date")
     public MyInfo typeLicenseExpiryDateLabel(String licenseExpiryDate) {
         licenseExpiryDateLabel.sendKeys(Keys.CONTROL + "a");
         licenseExpiryDateLabel.sendKeys(Keys.DELETE);
@@ -167,13 +166,14 @@ public class MyInfo {
         return this;
     }
 
-
+    @Step("Select nationality")
     public MyInfo selectNationalityLabel() {
         nationalityDropDownList.click();
         nationalityLabel.click();
         return this;
     }
 
+    @Step("Choosing marital status: {maritalStatus}")
     public MyInfo chooseMaritalStatusLabel(MaritalStatus maritalStatus) {
         maritalStatusDropDownListLabel.click();
         switch(maritalStatus){
@@ -190,6 +190,7 @@ public class MyInfo {
         return this;
     }
 
+    @Step("Type date of birth")
     public MyInfo typeDateOfBirthLabel(String dateOfBirth) {
         dateOfBirthLabel.click();
         dateOfBirthLabel.sendKeys(Keys.CONTROL + "a");
@@ -198,12 +199,14 @@ public class MyInfo {
         return this;
     }
 
+    @Step("Click on gender")
     public MyInfo clickGenderRadioButton(){
        femaleRadioButton.click();
         return this;
     }
 
-    public MyInfo setBloodTypeLabel(BloodType bloodType) {
+    @Step("Choosing blood type: {bloodType}")
+    public MyInfo chooseBloodTypeLabel(BloodType bloodType) {
         bloodTypeDropDownListLabel.click();
         switch(bloodType){
             case A_POSITIVE:
@@ -231,11 +234,6 @@ public class MyInfo {
                 ABNegativeLabel.click();
                 break;
         }
-        return this;
-    }
-
-    public MyInfo clickSaveButton() {
-        saveButton.click();
         return this;
     }
 }
