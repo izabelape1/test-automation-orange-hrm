@@ -16,10 +16,6 @@ public class BasePage {
         PageFactory.initElements(getDriver(), this);
     }
 
-    public static BasePage getInstance() {
-        return new BasePage();
-    }
-
     @Step("Click save button")
     public BasePage clickSaveButton() {
         saveButton.click();

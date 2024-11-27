@@ -106,10 +106,6 @@ public class MyInfo extends BasePage {
         PageFactory.initElements(getDriver(), this);
     }
 
-    public static MyInfo getInstance() {
-        return new MyInfo();
-    }
-
     @Step("Type first name")
     public MyInfo typeFirstNameLabel(String firstName) {
         firstNameLabel.sendKeys(Keys.CONTROL + "a");
