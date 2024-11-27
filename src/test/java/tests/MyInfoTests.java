@@ -42,4 +42,3 @@ public class MyInfoTests extends TestSetup {
                     .clickSaveButton();
         }
     }
-////todo zrobić pull request i dodać Kubę jako reviever
