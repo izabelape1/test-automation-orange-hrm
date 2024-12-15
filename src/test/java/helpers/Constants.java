@@ -4,6 +4,7 @@ public class Constants {
     public static final String MEMBERSHIP_AMOUNT = "1000";
     public static final String DATE_OF_BIRTH = "1990-04-24";
     public static final int EMPLOYEE_ID_NUMBER = 1234;
+    public static final int PHONE_NUMBER = 111111111;
     public static final int OTHER_ID_NUMBER = 4321;
     public static final int DRIVERS_LICENSE_NUMBER = 123456;
     public static final String LICENSE_EXPIRY_DATE = "2055-05-25";

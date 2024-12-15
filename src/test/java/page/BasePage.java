@@ -9,7 +9,7 @@ import static helpers.DriverSingleton.getDriver;
 
 public class BasePage {
 
-    @FindBy(xpath = "//button[@type='submit'] | //form[@class='oxd-form']/div[2]/button | //div[@class='orangehrm-edit-employee-content']/div[2]/div[1]/form/div[4]/button[2]")
+    @FindBy(xpath = "//button[@type='submit'] | //form[@class='oxd-form']/div[2]/button | //div[@class='orangehrm-edit-employee-content']/div[2]/div[1]/form/div[4]/button[2] | //form[@class='oxd-form']/div[8]/button[2]")
     private WebElement saveButton;
 
     public BasePage() {

@@ -1,17 +1,17 @@
 package tests;
 
 import page.Menu;
-import page.MyInfo;import io.qameta.allure.Severity;
+import static helpers.Constants.*;
 import org.testng.annotations.Test;
 import io.qameta.allure.Description;
 import io.qameta.allure.SeverityLevel;
 
-import static helpers.Constants.*;
 import static enums.BloodType.A_NEGATIVE;
 import static enums.MaritalStatus.MARRIED;
+import page.MyInfo;import io.qameta.allure.Severity;
+
 
 public class MyInfoTests extends TestSetup {
-
 
     @Test
     @Severity(SeverityLevel.NORMAL)

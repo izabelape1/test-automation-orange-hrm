@@ -15,6 +15,9 @@ public class Menu extends BasePage {
     @FindBy(xpath = "//nav[@class='oxd-navbar-nav']/div[2]/ul/li[6]/a/span")
     private WebElement myInfoButton;
 
+    @FindBy(xpath = "//nav[@class='oxd-navbar-nav']/div[2]/ul/li[5]/a/span")
+    private WebElement recruitmentButton;
+
     public Menu() {
         PageFactory.initElements(getDriver(), this);
     }
@@ -27,6 +30,12 @@ public class Menu extends BasePage {
     @Step("Click admin button")
     public Menu clickAdminButton() {
         adminButton.click();
+        return this;
+    }
+
+    @Step("Click recruitment button")
+    public Menu clickRecruitmentButton(){
+        recruitmentButton.click();
         return this;
     }
 }
