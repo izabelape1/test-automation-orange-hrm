@@ -1,27 +1,41 @@
 package tests;
 
-import page.MyInfo;
+import page.Menu;
+import static helpers.Constants.*;
 import org.testng.annotations.Test;
+import io.qameta.allure.Description;
+import io.qameta.allure.SeverityLevel;
+
+import static enums.BloodType.A_NEGATIVE;
+import static enums.MaritalStatus.MARRIED;
+import page.MyInfo;import io.qameta.allure.Severity;
+
 
 public class MyInfoTests extends TestSetup {
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Modifying data of logged user")
     public void modifyDataOfLoggedUserTest() {
+
+        Menu menu = new Menu();
+        menu
+                .clickMyInfoButton();
+
         MyInfo myInfo = new MyInfo();
         myInfo
-                .clickMyInfoButton()
-                .setFirstNameLabel("Anna")
-                .setMiddleNameLabel("Pola")
-                .setLastNameLabel("Kowalska")
-                .setEmployeeIdLabel(123)
-                .setOtherIdLabel(123)
-                .setDriversLicenseNumberLabel(123)
-                .setLicenseExpiryDateLabel("2025-01-01")
-                .setNationalityLabel()
-                .setMaritalStatusLabel()
-                .setDateOfBirthLabel("2000-01-01")
-                .setGenderRadioButton()
-                .clickSaveButton()
-                .setBloodTypeLabel();
+                .typeFirstNameLabel(FIRST_NAME)
+                .typeMiddleNameLabel(MIDDLE_NAME)
+                .typeLastNameLabel(LAST_NAME)
+                .typeEmployeeIdLabel(EMPLOYEE_ID_NUMBER)
+                .typeOtherIdLabel(OTHER_ID_NUMBER)
+                .typeDriversLicenseNumberLabel(DRIVERS_LICENSE_NUMBER)
+                .typeLicenseExpiryDateLabel(LICENSE_EXPIRY_DATE)
+                .selectNationalityLabel()
+                .chooseMaritalStatusLabel(MARRIED)
+                .typeDateOfBirthLabel(DATE_OF_BIRTH)
+                .clickGenderRadioButton()
+                .chooseBloodTypeLabel(A_NEGATIVE)
+                .clickSaveButton();
     }
 }

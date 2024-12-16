@@ -1,16 +1,22 @@
 package tests;
 
-import enums.UserRole;
-import enums.UserStatus;
 import page.Menu;
 import page.Admin;
 import org.testng.Assert;
+import io.qameta.allure.Severity;
 import org.testng.annotations.Test;
+import io.qameta.allure.Description;
+import io.qameta.allure.SeverityLevel;
+
+import static enums.UserRole.ADMIN;
+import static enums.UserStatus.ENABLED;
 
 public class AdminTests extends TestSetup {
 
     @Test
-    public void addingNewAdminTest() {
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Adding new admin with status enabled")
+    public void givenAdminDetailsWhenClickOnSaveButtonThenNewAdminIsRegisterTest(){
 
         Menu menu = new Menu();
         menu
@@ -19,11 +25,11 @@ public class AdminTests extends TestSetup {
         Admin admin = new Admin();
         admin
                 .clickAddButton()
-                .chooseUserRoleLabel(UserRole.ADMIN)
-                .chooseStatusLabel(UserStatus.ENABLED)
-                .setEmployeeNameLabel()
-                .setUserNameLabel()
-                .setPasswordLabel()
+                .typeEmployeeNameLabel()
+                .typeUserNameLabel()
+                .typePasswordLabel()
+                .chooseUserRoleLabel(ADMIN)
+                .chooseStatusLabel(ENABLED)
                 .typeConfirmPasswordLabel()
                 .clickSaveButton();
         Assert.assertTrue(admin.isSuccessButtonIsDisplayed());
