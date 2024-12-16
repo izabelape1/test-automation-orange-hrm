@@ -24,4 +24,3 @@ public enum Vacancy {
         return description;
     }
 }
-

@@ -1,8 +1,8 @@
 package helpers;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.FileInputStream;
 
 import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;

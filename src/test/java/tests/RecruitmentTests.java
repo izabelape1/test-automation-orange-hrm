@@ -1,9 +1,9 @@
 package tests;
 
-import org.testng.Assert;
 import page.Menu;
 import page.BasePage;
 import page.Recruitment;
+import org.testng.Assert;
 
 import io.qameta.allure.Severity;
 

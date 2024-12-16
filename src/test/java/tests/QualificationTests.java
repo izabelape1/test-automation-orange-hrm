@@ -2,8 +2,8 @@ package tests;
 
 import page.Menu;
 import page.Qualifications;
-import org.testng.annotations.Test;
 import io.qameta.allure.Severity;
+import org.testng.annotations.Test;
 import io.qameta.allure.Description;
 import io.qameta.allure.SeverityLevel;
 
